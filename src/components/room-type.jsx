@@ -8,9 +8,9 @@ const RoomTypeWrapper = styled.div`
     border: 1px solid grey;
 `
 
-export const RoomType = ({id, roomType, value = 0, onChangeHandler}) => (
+export const RoomType = ({id, roomType, value = 0, onChange}) => (
     <RoomTypeWrapper>
         <Label>{roomType}</Label>
-        <input type='number' id={id} value={value} onChange={onChangeHandler} />
+        <input type='number' min="0" id={id} value={value} onChange={onChange} />
     </RoomTypeWrapper>
 )
