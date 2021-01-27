@@ -3,6 +3,7 @@ import {
   H1, H2, PageWrapper, RoomTypesWrapper,
 } from './common'
 import { RoomType } from './room-type'
+import { OccupancyTable } from './occupancy-table'
 import { getUsage } from '../utils/get-usage'
 
 export const App = () => {
@@ -49,10 +50,12 @@ export const App = () => {
         <RoomType id="economy" roomType="Economy" value={freeRooms.economy} onChange={onChangeHandler} />
       </RoomTypesWrapper>
       <button onClick={onClickHandler}>Check Occupancy</button>
-      <p>{usage.premium.usage}</p>
-      <p>{usage.premium.revenue}</p>
-      <p>{usage.economy.usage}</p>
-      <p>{usage.economy.revenue}</p>
+      <OccupancyTable
+        premiumUsage={usage.premium.usage}
+        premiumRevenue={usage.premium.revenue}
+        economyUsage={usage.economy.usage}
+        economyRevenue={usage.economy.revenue}
+      />
     </PageWrapper>
   )
 }
