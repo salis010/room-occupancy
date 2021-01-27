@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Label } from './common'
 
@@ -16,3 +17,10 @@ export const RoomType = ({
     <input type="number" min="0" id={id} value={value} onChange={onChange} />
   </RoomTypeWrapper>
 )
+
+RoomType.propTypes = {
+  id: PropTypes.string.isRequired,
+  roomType: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+}
