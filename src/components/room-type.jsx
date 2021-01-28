@@ -1,20 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { Label } from './common'
+import { Label, NumberInput } from './common'
 
 const RoomTypeWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid grey;
+    padding: 1rem 0;
 `
 
 export const RoomType = ({
   id, roomType, value = 0, onChange,
 }) => (
   <RoomTypeWrapper>
-    <Label>{roomType}</Label>
-    <input type="number" min="0" id={id} value={value} onChange={onChange} />
+    <Label>
+      {roomType}
+      :
+    </Label>
+    <NumberInput type="number" min="0" id={id} value={value} onChange={onChange} />
   </RoomTypeWrapper>
 )
 

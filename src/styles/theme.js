@@ -8,7 +8,7 @@ export const theme = {
     lightGrey: 'RGB(200, 200, 200)',
   },
   dimensions: {
-    radius: '20px',
+    sectionChildWidth: '37rem',
     borderRadius: '6px',
   },
   spaces: {

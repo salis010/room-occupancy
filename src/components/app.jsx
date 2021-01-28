@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {
-  H1, H2, PageWrapper, RoomTypesWrapper,
+  H1, PageWrapper, ContentsWrapper, Section,
+  RoomTypesWrapper, ResultsWrapper, ButtonWrapper, Button,
 } from './common'
+import { SectionHeader } from './section-header'
 import { RoomType } from './room-type'
 import { OccupancyTable } from './occupancy-table'
 import { getUsage } from '../utils/get-usage'
@@ -33,7 +35,7 @@ export const App = () => {
   const onChangeHandler = (event) => setFreeRooms(
     {
       ...freeRooms,
-      [event.target.id]: event.target.value,
+      [event.target.id]: parseInt(event.target.value, 10),
     },
   )
 
@@ -44,18 +46,30 @@ export const App = () => {
   return (
     <PageWrapper>
       <H1>Room Occupancy</H1>
-      <H2>Enter available rooms:</H2>
-      <RoomTypesWrapper>
-        <RoomType id="premium" roomType="Premium" value={freeRooms.premium} onChange={onChangeHandler} />
-        <RoomType id="economy" roomType="Economy" value={freeRooms.economy} onChange={onChangeHandler} />
-      </RoomTypesWrapper>
-      <button onClick={onClickHandler}>Check Occupancy</button>
-      <OccupancyTable
-        premiumUsage={usage.premium.usage}
-        premiumRevenue={usage.premium.revenue}
-        economyUsage={usage.economy.usage}
-        economyRevenue={usage.economy.revenue}
-      />
+      <ContentsWrapper>
+        <Section>
+          <SectionHeader title="Enter available rooms:" />
+          <RoomTypesWrapper>
+            <RoomType id="premium" roomType="Premium" value={freeRooms.premium} onChange={onChangeHandler} />
+            <RoomType id="economy" roomType="Economy" value={freeRooms.economy} onChange={onChangeHandler} />
+          </RoomTypesWrapper>
+        </Section>
+
+        <Section>
+          <SectionHeader title="Occupancy" />
+          <ResultsWrapper>
+            <OccupancyTable
+              premiumUsage={usage.premium.usage}
+              premiumRevenue={usage.premium.revenue}
+              economyUsage={usage.economy.usage}
+              economyRevenue={usage.economy.revenue}
+            />
+            <ButtonWrapper>
+              <Button onClick={onClickHandler}>Calculate Occupancy</Button>
+            </ButtonWrapper>
+          </ResultsWrapper>
+        </Section>
+      </ContentsWrapper>
     </PageWrapper>
   )
 }

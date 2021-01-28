@@ -6,6 +6,7 @@ const TableWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
     padding: 0 1rem;
     border: 1px solid ${(props) => props.theme.colors.lightGrey};
     border-radius: ${(props) => props.theme.dimensions.borderRadius};
