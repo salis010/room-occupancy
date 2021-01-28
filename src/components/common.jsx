@@ -6,11 +6,6 @@ export const PageWrapper = styled.div`
     align-items: center;
 `
 
-export const H1 = styled.h1`
-    font-size: 3rem;
-    color: ${(props) => props.theme.colors.primary}
-`
-
 export const Section = styled.section`
     display: flex;
     flex-direction: column;

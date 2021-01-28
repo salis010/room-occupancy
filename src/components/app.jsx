@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { PageHeader } from './page-header'
 import {
-  H1, PageWrapper, ContentsWrapper, Section,
-  RoomTypesWrapper, ResultsWrapper, ButtonWrapper, Button,
+  PageWrapper, ContentsWrapper, Section, RoomTypesWrapper, ResultsWrapper, ButtonWrapper, Button,
 } from './common'
 import { SectionHeader } from './section-header'
 import { RoomType } from './room-type'
@@ -44,32 +44,34 @@ export const App = () => {
   }
 
   return (
-    <PageWrapper>
-      <H1>Room Occupancy</H1>
-      <ContentsWrapper>
-        <Section>
-          <SectionHeader title="Enter available rooms:" />
-          <RoomTypesWrapper>
-            <RoomType id="premium" roomType="Premium" value={freeRooms.premium} onChange={onChangeHandler} />
-            <RoomType id="economy" roomType="Economy" value={freeRooms.economy} onChange={onChangeHandler} />
-          </RoomTypesWrapper>
-        </Section>
+    <>
+      <PageHeader title="Room Occupancy" />
+      <PageWrapper>
+        <ContentsWrapper>
+          <Section>
+            <SectionHeader title="Enter available rooms:" />
+            <RoomTypesWrapper>
+              <RoomType id="premium" roomType="Premium" value={freeRooms.premium} onChange={onChangeHandler} />
+              <RoomType id="economy" roomType="Economy" value={freeRooms.economy} onChange={onChangeHandler} />
+            </RoomTypesWrapper>
+          </Section>
 
-        <Section>
-          <SectionHeader title="Occupancy" />
-          <ResultsWrapper>
-            <OccupancyTable
-              premiumUsage={usage.premium.usage}
-              premiumRevenue={usage.premium.revenue}
-              economyUsage={usage.economy.usage}
-              economyRevenue={usage.economy.revenue}
-            />
-            <ButtonWrapper>
-              <Button onClick={onClickHandler}>Calculate Occupancy</Button>
-            </ButtonWrapper>
-          </ResultsWrapper>
-        </Section>
-      </ContentsWrapper>
-    </PageWrapper>
+          <Section>
+            <SectionHeader title="Occupancy" />
+            <ResultsWrapper>
+              <OccupancyTable
+                premiumUsage={usage.premium.usage}
+                premiumRevenue={usage.premium.revenue}
+                economyUsage={usage.economy.usage}
+                economyRevenue={usage.economy.revenue}
+              />
+              <ButtonWrapper>
+                <Button onClick={onClickHandler}>Calculate Occupancy</Button>
+              </ButtonWrapper>
+            </ResultsWrapper>
+          </Section>
+        </ContentsWrapper>
+      </PageWrapper>
+    </>
   )
 }
